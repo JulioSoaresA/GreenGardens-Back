@@ -22,7 +22,7 @@
 }
 
 .swiper-slide .overlay::after {
-    content: 'Transformando espaços com beleza natural.';
+    content: attr(data-content);
     display: block;
     position: absolute;
     top: 50%;

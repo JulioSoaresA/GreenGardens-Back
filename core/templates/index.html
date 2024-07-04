@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Empresa de paisagismo">
-    <link rel="shortcut icon" href="../static/img/geral/logo.ico" />
-    <link rel="preload" href="../static/img/geral/logo.svg" as="image">
-    <link rel="preload" href="../static/img/slider/slider-img1.webp" as="image">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="{% static '/img/geral/logo.ico' %}" />
+    <link rel="preload" href="{% static 'img/geral/logo.svg' %}" as="image">
+    <link rel="preload" href="{% static 'img/slider/slider-img1.webp' %}" as="image">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Green Gardens</title>
@@ -16,7 +17,7 @@
 
 <body>
     <header>
-        <nav class="nav_bar container"><a href="#slider"><img src="../static/img/geral/logo.svg"
+        <nav class="nav_bar container"><a href="#slider"><img src="{% static '/img/geral/logo.svg' %}"
                     alt="Logo Green Gardens" class="navbar_logo"></a>
             <ul class="nav_links_desktop">
                 <li><a href="#servicos">Serviços</a></li>
@@ -24,10 +25,10 @@
                 <li><a href="#contato">Contato</a></li>
             </ul>
             <ul class="nav_links_mobile">
-                <li><a href="#servicos_mobile"><img src="../static/img/navbar/servicos-icon.svg"
+                <li><a href="#servicos_mobile"><img src="{% static 'img/navbar/servicos-icon.svg' %}"
                             alt="Icone serviços"></a></li>
-                <li><a href="#valores"><img src="../static/img/navbar/valores-icon.svg" alt="Icone valores"></a></li>
-                <li><a href="#contato"><img src="../static/img/navbar/contato-icon.svg" alt="Icone contato"></a></li>
+                <li><a href="#valores"><img src="{% static '/img/navbar/valores-icon.svg' %}" alt="Icone valores"></a></li>
+                <li><a href="#contato"><img src="{% static '/img/navbar/contato-icon.svg' %}" alt="Icone contato"></a></li>
             </ul>
         </nav>
     </header>
@@ -35,18 +36,14 @@
         <section id="slider" data-anima="scroll">
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="overlay"></div><img src="../static/img/slider/slider-img1.webp"
-                            alt="Quintal de plantas">
-                    </div>
-                    <div class="swiper-slide"><img src="../static/img/slider/slider-img2.webp" alt="Parque"
-                                                   loading="lazy">
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="swiper-slide"><img src="../static/img/slider/slider-img3.webp" alt="Restaurante"
-                                                   loading="lazy">
-                        <div class="overlay"></div>
-                    </div>
+                    {% if intro %}
+                        {% for slide in intro %}
+                            <div class="swiper-slide">
+                                <div class="overlay" data-content="{{ slide.titulo }}"></div><img src="{{ slide.imagem.url }}"
+                                    alt="{{ slide.alt }}" {% if forloop.counter >= 1 %}loading="lazy" {% endif %}>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
@@ -59,7 +56,7 @@
                     <div class="overlay"></div>
                 </div>
                 <div class="right_side">
-                    <div class="right_side-content"><img src="../static/img/geral/logo.svg" alt="Logo Green Gardens">
+                    <div class="right_side-content"><img src="{% static '/img/geral/logo.svg' %}" alt="Logo Green Gardens">
                         <p>Desde 2014 nossa missão é transformar espaços urbanos e residenciais em ambientes verdes e
                             sustentáveis, promovendo a harmonia entre a natureza e a vida moderna. </p><a
                             href="#contato" class="home_contact_button">Entrar em Contato</a>
@@ -68,7 +65,7 @@
                 </div>
             </div>
         </section>
-        <section id="servicos" data-anima="scroll"><img src="../static/img/geral/deco-cinza.svg" alt="Decoração cinza"
+        <section id="servicos" data-anima="scroll"><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza"
                                                         class="deco_home-top">
             <div class="servicos container">
                 <h1 class="section_title">Nossos serviços</h1>
@@ -282,7 +279,7 @@
     </section>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module" src="../static/js/main.js"></script>
+    <script type="module" src="{% static '/js/main.js' %}"></script>
 </body>
 
 </html>
