@@ -130,43 +130,22 @@
             </div><img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoraçao cinza" class="deco_ebooks_mobile">
         </section>
         <section id="valores" class="container" data-anima="scroll">
-            <h1 class="section_title">Valores</h1><img src="../static/img/geral/deco-cinza.svg" alt="Decoração cinza"
-                                                       class="valores_deco">
+            {% if nossos_valores %}
+                <h1 class="section_title">{{ nossos_valores.titulo }}</h1><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza"
+                                                           class="valores_deco">
+            {% endif %}
             <div class="carrossel_valores">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="../static/img/valores/valores_card-img1.webp" alt="Plantação">
-                        <div class="overlay_card-text">
-                            <h2>Sustentabilidade</h2>
-                            <p>Priorizar práticas ecologicamente responsáveis em todos os aspectos do nosso trabalho.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"><img src="../static/img/valores/valores_card-img2.webp" alt="Parque">
-                        <div class="overlay_card-text">
-                            <h2>Beleza natural</h2>
-                            <p>Valorizar a estética natural e a biodiversidade em nossos projetos. </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"><img src="../static/img/valores/valores_card-img3.webp" alt="Parque">
-                        <div class="overlay_card-text">
-                            <h2>Qualidade</h2>
-                            <p>Garantir a mais alta qualidade em nossos serviços e produtos, superando as expectativas
-                                dos clientes. </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"><img src="../static/img/valores/valores_card-img4.webp" alt="Plantação">
-                        <div class="overlay_card-text">
-                            <h2>Inovação</h2>
-                            <p>Integrar novas técnicas e ideias para criar soluções paisagísticas inovadoras. </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"><img src="../static/img/valores/valores_card-img5.webp" alt="Plantação">
-                        <div class="overlay_card-text">
-                            <h2>Comunidade</h2>
-                            <p>Contribuir para o bem-estar das comunidades locais, criando espaços verdes acessíveis e
-                                agradáveis para todos. </p>
-                        </div>
-                    </div>
+                    {% if valores %}
+                        {% for valor in valores %}
+                            <div class="swiper-slide"><img src="{{ valor.imagem.url }}" alt="{{ valor.alt }}">
+                                <div class="overlay_card-text">
+                                    <h2>{{ valor.titulo }}</h2>
+                                    <p>{{ valor.descricao }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </section>
