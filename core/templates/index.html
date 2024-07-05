@@ -190,10 +190,7 @@
                 <div class="contato_grid">
                     <div class="local_side">
                         {% if contato %}
-                        <iframe
-                            src="{{ contato.link_maps}}"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        {{ contato.link_maps|safe }}
                         <div class="local_text">
                             <span class="informations">
                                 <img src="{% static '/img/contato/pin-local.svg' %}" alt="Pin locaizaçao">
