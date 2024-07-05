@@ -52,7 +52,7 @@
         </section>
         <section id="home" data-anima="scroll">
             <div class="side-a-side_grid">
-                <div class="left_side"><img src="../static/img/home/logo-Text.svg" alt="Logo e Texto Green Gardens">
+                <div class="left_side"><img src="{% static '/img/home/logo-Text.svg' %}" alt="Logo e Texto Green Gardens">
                     <div class="overlay"></div>
                 </div>
                 <div class="right_side">
@@ -61,7 +61,7 @@
                             sustentáveis, promovendo a harmonia entre a natureza e a vida moderna. </p><a
                             href="#contato" class="home_contact_button">Entrar em Contato</a>
                     </div><img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoração em círculo"
-                               class="deco-home">
+                                class="deco-home">
                 </div>
             </div>
         </section>
@@ -79,7 +79,7 @@
                         <p>Paisagismo de áreas internas</p>
                     </div>
                 </div>
-            </div><img src="../static/img/geral/deco-cinza.svg" alt="Decoração cinza" class="deco_home-bottom">
+            </div><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_home-bottom">
         </section>
         <section id="servicos_mobile" data-anima="scroll">
             <h1 class="section_title container">Nossos serviços</h1>
@@ -98,9 +98,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-next-servicos"><img src="../static/img/servicos/next-arrow.svg"
+                <div class="swiper-button-next-servicos"><img src="{%  static '/img/servicos/next-arrow.svg' %}"
                         alt="Seta de próximo"></div>
-                <div class="swiper-button-prev-servicos"><img src="../static/img/servicos/prev-arrow.svg"
+                <div class="swiper-button-prev-servicos"><img src="{% static '/img/servicos/prev-arrow.svg' %}"
                         alt="Seta de anterior"></div>
             </div>
         </section>
@@ -114,7 +114,7 @@
                         expert em jardinagem e desfrute de um ambiente natural deslumbrante. </p><button
                         data-buttonModal>Download gratuito</button>
                 </div><img src="../static/img/ebooks/ebook.webp" alt="E-book de cuidados e paisagismo">
-            </div><img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoraçao serviços" class="deco_servicos">
+            </div><img src="{% static '/img/geral/deco-verdeClaro.svg' %}" alt="Decoraçao serviços" class="deco_servicos">
         </section>
         <section id="ebooks_mobile" data-anima="scroll">
             <h1 class="section_title container">E-books gratuitos</h1>
@@ -127,12 +127,12 @@
                         class="show_more_text">... Leia mais</button></p><button class="buttonOpenModal_mobile"
                     data-buttonModal>Download gratuito</button><img src="../static/img/ebooks/ebook.webp"
                     alt="Guia de cuidados" class="ebooks_mobile_img">
-            </div><img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoraçao cinza" class="deco_ebooks_mobile">
+            </div><img src="{% static '/img/geral/deco-verdeClaro.svg' %}" alt="Decoraçao cinza" class="deco_ebooks_mobile">
         </section>
         <section id="valores" class="container" data-anima="scroll">
             {% if nossos_valores %}
                 <h1 class="section_title">{{ nossos_valores.titulo }}</h1><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza"
-                                                           class="valores_deco">
+                                                            class="valores_deco">
             {% endif %}
             <div class="carrossel_valores">
                 <div class="swiper-wrapper">
@@ -149,81 +149,98 @@
                 </div>
             </div>
         </section>
-        <section id="avaliacao" data-anima="scroll"><img src="../static/img/geral/deco-verdeClaro.svg"
+        <section id="avaliacao" data-anima="scroll"><img src="{% static '/img/geral/deco-verdeClaro.svg' %}"
                 alt="Decoraçao Avaliaçao" class="deco_avaliacao">
             <div class="avaliacao_grid">
                 <div class="avaliacao_content container">
-                    <div class="avaliacao_text"><img src="../static/img/avaliacao/quote-top.svg" alt="Aspas"
-                                                     class="top_aspas">
+                    <div class="avaliacao_text"><img src="{% static '/img/avaliacao/quote-top.svg' %}" alt="Aspas"
+                                                        class="top_aspas">
                         <p>Procurei a Green Gardens para a transformação da minha casa em um lar aconchegante. A equipe
                             fez um trabalho incrível, com muito cuidado e atenção em todos os detalhes. </p><span>Maria
-                            Joana </span><img src="../static/img/avaliacao/quote-bottom.svg" alt="Aspas"
-                                              class="bottom_aspas">
+                            Joana </span><img src="{% static '/img/avaliacao/quote-bottom.svg' %}" alt="Aspas"
+                                                class="bottom_aspas">
                     </div>
                 </div>
                 <div class="avaliacao_img_side"></div>
             </div>
         </section>
-        <section id="galeria" class="container" data-anima="scroll"><img src="../static/img/geral/deco-cinza.svg"
+        <section id="galeria" class="container" data-anima="scroll"><img src="{% static '/img/geral/deco-cinza.svg' %}"
                 alt="Decoração cinza" class="deco_galeria_top">
             <h1 class="section_title">Galeria</h1>
             <div class="galeria_grid"><img src="../static/img/galeria/galeria-img1.webp" alt="Parque aquático"
-                                           class="galeria_card"><img src="../static/img/galeria/galeria-img2.webp" alt="Parque aquático"
-                                                                     class="galeria_card"><img src="../static/img/galeria/galeria-img3.webp" alt="Parque aquático"
-                                                                                               class="galeria_card" id="remove"></div><button id="showMoreGaleria" class="button_show_more">
-                <p>Veja mais</p><img src="../static/img/galeria/seta.svg" alt="Seta para a direita">
-            </button><img src="../static/img/geral/deco-cinza.svg" alt="Decoração cinza" class="deco_galeria_bottom">
+                                            class="galeria_card"><img src="../static/img/galeria/galeria-img2.webp" alt="Parque aquático"
+                                                                        class="galeria_card"><img src="../static/img/galeria/galeria-img3.webp" alt="Parque aquático"
+                                                                                                class="galeria_card" id="remove"></div><button id="showMoreGaleria" class="button_show_more">
+                <p>Veja mais</p><img src="{% static 'img/galeria/seta.svg' %}" alt="Seta para a direita">
+            </button><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_galeria_bottom">
         </section>
         <section id="contato" data-anima="scroll">
             <div class="container grid_mobile">
                 <h1 class="section_title">Contato</h1>
                 <div class="contato_grid">
-                    <div class="local_side"><iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.086698784101!2d-35.2019702240527!3d-5.843404357589081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff82aa3e3b4d%3A0x20c4bb30f68e7bc3!2sEscola%20de%20Ci%C3%AAncias%E2%80%8B%20e%20Tecnologia%20(ECT%2FUFRN)!5e0!3m2!1spt-BR!2sbr!4v1718911337805!5m2!1spt-BR!2sbr"
+                    <div class="local_side">
+                        {% if contato %}
+                        <iframe
+                            src="{{ contato.link_maps}}"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <div class="local_text"><span class="informations"><img
-                                src="../static/img/contato/pin-local.svg" alt="Pin locaizaçao">
-                                <p>Avenida central, Nº 0 Natal- RN Brasil - Terra - Via Láctea </p>
-                            </span><span class="informations"><img src="../static/img/contato/email-icon.svg"
-                                    alt="ícone do email">
-                                <p>greengardens@gmail.com </p>
-                            </span><span class="informations"><img src="../static/img/contato/telefone-icon.svg"
-                                    alt="ícone telefone">
-                                <p>(84) 9 4002-8922 </p>
-                            </span></div>
-                        <div class="social_links"><a href=""><img src="../static/img/contato/insta-icon.svg"
-                                    alt="ícone Instagram"></a><a href=""><img
-                                src="../static/img/contato/face-icon.svg" alt="ícone Facebook"></a></div>
+                        <div class="local_text">
+                            <span class="informations">
+                                <img src="{% static '/img/contato/pin-local.svg' %}" alt="Pin locaizaçao">
+                                <p>{{ contato.endereco }}</p>
+                            </span>
+                            <span class="informations">
+                                <img src="{% static '/img/contato/email-icon.svg' %}" alt="ícone do email">
+                                <p>{{ contato.email }}</p>
+                            </span>
+                            <span class="informations"><img src="{% static '/img/contato/telefone-icon.svg' %}" alt="ícone telefone">
+                                <p>{{ contato.telefone }} </p>
+                            </span>
+                        </div>
+                        <div class="social_links">
+                            <a href="{{ contato.instagram }}"><img src="{% static '/img/contato/insta-icon.svg' %}" alt="ícone Instagram"></a>
+                            <a href="{{ contato.facebook }}"><img src="{% static '/img/contato/face-icon.svg' %}" alt="ícone Facebook"></a>
+                        </div>
+                        {% endif %}
                     </div>
-                    <form action="https://formsubmit.co/7e0e2f314819fb2e4f26bcf8676df161" method="POST"
-                        class="form_contato">
-                        <div class="side_a_side_input"><label for="nome">Nome <br><input type="text" name="nome"
-                                    placeholder="Seu nome" required></label><label for="telefone">Telefone <br><input
-                                    type="text" name="telefone" placeholder="(xx) xxxxx-xxxx" required></label></div>
-                        <label for="email">Email <br><input type="email" name="email" placeholder="nome@email.com"
-                                required></label><label for="mensagem">Mensagem <br><textarea name="mensagem" rows="10"
-                                cols="30" placeholder="O que você precisa?" required></textarea></label><button
-                            type="submit" id="send_message">Enviar mensagem</button><input type="hidden" name="_subject"
-                            value="Novo Contato, Green Gardens!"><input type="text" name="_honey"
-                            style="display:none"><input type="hidden" name="_captcha" value="false">
+                    <form action="." method="POST" class="form_contato">
+                        {% csrf_token %}
+                        <div class="side_a_side_input">
+                            <label for="nome">Nome <br>
+                                <input type="text" name="nome" placeholder="Seu nome" required>
+                            </label>
+                            <label for="telefone">Telefone <br>
+                                <input  class="telefone-mask" type="text" name="telefone" placeholder="(xx) xxxxx-xxxx" required>
+                            </label>
+                        </div>
+                        <label for="email">Email <br>
+                            <input type="email" name="email" placeholder="nome@email.com"  required>
+                        </label>
+                        <label for="mensagem">Mensagem <br>
+                            <textarea name="mensagem" rows="10" cols="30" placeholder="O que você precisa?" required></textarea>
+                        </label>
+                        <button type="submit" id="send_message">Enviar mensagem</button>
+                        <input type="hidden" name="_subject" value="Novo Contato, Green Gardens!">
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
                     </form>
                 </div>
-            </div><img src="../static/img/geral/deco-cinza.svg" alt="Decoração cinza" class="deco_contato">
+            </div><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_contato">
         </section>
     </main>
     <footer>
-        <div class="footer_grid container"><img src="../static/img/footer/logo_footer.svg" alt="Logo do footer"
-                                                class="logo_footer">
+        <div class="footer_grid container"><img src="{% static 'img/footer/logo_footer.svg' %}" alt="Logo do footer" class="logo_footer">
             <div class="footer_contato">
+                {% if contato %}
                 <h2>Contato</h2>
                 <div class="email_telefone">
-                    <p>(84) 9 4002-8922 greengardens@gmail.com </p>
+                    <p>{{ contato.telefone }} {{ contato.email }} </p>
                 </div>
-                <div class="footer_local">Avenida central, Nº 0 Natal- RN </div>
-                <div class="social_footer"><a href=""><img src="../static/img/footer/insta-logo-white.svg"
-                            alt="ícone Instagram"></a><a href=""><img src="../static/img/footer/face-logo-white.svg"
-                            alt="ícone Facebook"></a></div>
+                <div class="footer_local">{{ contato.endereco }}</div>
+                <div class="social_footer">
+                    <a href="{{ contato.instagram }}"><img src="{% static '/img/footer/insta-logo-white.svg' %}" alt="ícone Instagram"></a>
+                    <a href="{{ contato.facebook }}"><img src="{% static '/img/footer/face-logo-white.svg'  %}" alt="ícone Facebook"></a></div>
+                {% endif %}
             </div>
             <div class="footer_informations">
                 <h2>Informações</h2>
@@ -259,6 +276,22 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static '/js/jquery.mask.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            // Aplica a máscara
+            $('.telefone-mask').mask('(00) 0000-0000');
+
+            // Limita o número de caracteres
+            $('.telefone-mask').on('input', function () {
+                const maxLength = 14; // Incluindo parênteses, espaço e hífen
+                if (this.value.length > maxLength) {
+                    this.value = this.value.slice(0, maxLength);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
