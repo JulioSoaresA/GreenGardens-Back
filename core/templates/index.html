@@ -164,15 +164,25 @@
                 <div class="avaliacao_img_side"></div>
             </div>
         </section>
-        <section id="galeria" class="container" data-anima="scroll"><img src="{% static '/img/geral/deco-cinza.svg' %}"
-                alt="Decoração cinza" class="deco_galeria_top">
+        <section id="galeria" class="container" data-anima="scroll">
+            <img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_galeria_top">
             <h1 class="section_title">Galeria</h1>
-            <div class="galeria_grid"><img src="../static/img/galeria/galeria-img1.webp" alt="Parque aquático"
-                                            class="galeria_card"><img src="../static/img/galeria/galeria-img2.webp" alt="Parque aquático"
-                                                                        class="galeria_card"><img src="../static/img/galeria/galeria-img3.webp" alt="Parque aquático"
-                                                                                                class="galeria_card" id="remove"></div><button id="showMoreGaleria" class="button_show_more">
-                <p>Veja mais</p><img src="{% static 'img/galeria/seta.svg' %}" alt="Seta para a direita">
-            </button><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_galeria_bottom">
+            <div class="galeria_grid">
+                {% if galeria %}
+                    {% for foto in galeria %}
+                        {% if forloop.counter < 4 %}
+                            <img src="{{ foto.imagem.url }}" alt="{{ foto.alt }}" class="galeria_card"  {% if forloop.counter > 2 %}id="remove"{% endif %}>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% if contato %}
+            <button id="showMoreGaleria" class="button_show_more" onclick="location.href='{{ contato.instagram }}'">
+                <p>Veja mais</p>
+                <img src="{% static 'img/galeria/seta.svg' %}" alt="Seta para a direita">
+            </button>
+            {% endif %}
+            <img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_galeria_bottom">
         </section>
         <section id="contato" data-anima="scroll">
             <div class="container grid_mobile">

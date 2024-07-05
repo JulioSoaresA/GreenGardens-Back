@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
+from .models import Galeria
 from apps.sobre.models import Intro, NossosValores, Valores
 from apps.contato.models import Contato
 from apps.contato.forms import ContatoForm
@@ -9,6 +10,7 @@ def index(request):
     intro = Intro.objects.all().order_by('-id')
     nossos_valores = NossosValores.objects.all().last()
     valores = Valores.objects.all().order_by('-id')
+    galeria = Galeria.objects.all().order_by('-data')
     contato = Contato.objects.all().last()
 
     if request.method == "GET":
