@@ -52,15 +52,19 @@
         </section>
         <section id="home" data-anima="scroll">
             <div class="side-a-side_grid">
-                <div class="left_side"><img src="{% static '/img/home/logo-Text.svg' %}" alt="Logo e Texto Green Gardens">
+                <div class="left_side" {% if imagem_quem_somos %}style="background-image: url({{imagem_quem_somos.imagem.url}});"{% else %}style="background-image: url({% static '/img/home/homeImg.webp' %});"{% endif %}>
+                    <img src="{% static '/img/home/logo-Text.svg' %}" alt="Logo e Texto Green Gardens">
                     <div class="overlay"></div>
                 </div>
                 <div class="right_side">
-                    <div class="right_side-content"><img src="{% static '/img/geral/logo.svg' %}" alt="Logo Green Gardens">
-                        <p>Desde 2014 nossa missão é transformar espaços urbanos e residenciais em ambientes verdes e
-                            sustentáveis, promovendo a harmonia entre a natureza e a vida moderna. </p><a
-                            href="#contato" class="home_contact_button">Entrar em Contato</a>
-                    </div><img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoração em círculo"
+                    <div class="right_side-content">
+                        <img src="{% static '/img/geral/logo.svg' %}" alt="Logo Green Gardens">
+                        {% if quem_somos %}
+                            <p>{{ quem_somos.descricao }}</p>
+                        {% endif %}
+                        <a href="#contato" class="home_contact_button">Entrar em Contato</a>
+                    </div>
+                    <img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoração em círculo"
                                 class="deco-home">
                 </div>
             </div>

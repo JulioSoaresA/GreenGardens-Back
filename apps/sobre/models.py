@@ -38,3 +38,25 @@ class Valores(models.Model):
 
     def __str__(self):
         return self.titulo
+
+
+class QuemSomos(models.Model):
+    descricao = models.TextField(verbose_name='Descrição')
+
+    class Meta:
+        verbose_name = 'Quem Somos'
+        verbose_name_plural = 'Quem Somos'
+        db_table = 'quem_somos'
+
+
+class ImagemQuemSomos(models.Model):
+    imagem = models.ImageField('Foto de Exibição', null=True, blank=True, upload_to='core/static/img/quem_somos')
+    alt = models.CharField(verbose_name='Texto Alternativo', max_length=100)
+
+    class Meta:
+        verbose_name = 'Imagem Quem Somos'
+        verbose_name_plural = 'Imagens Quem Somos'
+        db_table = 'imagem_quem_somos'
+
+    def __str__(self):
+        return self.alt
