@@ -149,19 +149,20 @@
                 </div>
             </div>
         </section>
-        <section id="avaliacao" data-anima="scroll"><img src="{% static '/img/geral/deco-verdeClaro.svg' %}"
-                alt="Decoraçao Avaliaçao" class="deco_avaliacao">
+        <section id="avaliacao" data-anima="scroll">
+            <img src="{% static '/img/geral/deco-verdeClaro.svg' %}" alt="Decoraçao Avaliaçao" class="deco_avaliacao">
             <div class="avaliacao_grid">
                 <div class="avaliacao_content container">
-                    <div class="avaliacao_text"><img src="{% static '/img/avaliacao/quote-top.svg' %}" alt="Aspas"
-                                                        class="top_aspas">
-                        <p>Procurei a Green Gardens para a transformação da minha casa em um lar aconchegante. A equipe
-                            fez um trabalho incrível, com muito cuidado e atenção em todos os detalhes. </p><span>Maria
-                            Joana </span><img src="{% static '/img/avaliacao/quote-bottom.svg' %}" alt="Aspas"
-                                                class="bottom_aspas">
+                    <div class="avaliacao_text">
+                        {% if comentario %}
+                            <img src="{% static '/img/avaliacao/quote-top.svg' %}" alt="Aspas" class="top_aspas">
+                            <p>{{ comentario.texto }}</p>
+                            <span>{{ comentario.autor }}</span>
+                            <img src="{% static '/img/avaliacao/quote-bottom.svg' %}" alt="Aspas" class="bottom_aspas">
+                        {% endif %}
                     </div>
                 </div>
-                <div class="avaliacao_img_side"></div>
+                <div class="avaliacao_img_side" {% if imagem_comentario %}style="background-image: url({{imagem_comentario.imagem.url}});"{% else %}style="background-image: url({% static '/img/avaliacao/avaliation-img.webp' %});"{% endif %}></div>
             </div>
         </section>
         <section id="galeria" class="container" data-anima="scroll">

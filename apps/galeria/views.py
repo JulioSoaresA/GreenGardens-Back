@@ -3,15 +3,18 @@ from django.core.mail import send_mail
 from .models import Galeria
 from apps.sobre.models import Intro, NossosValores, Valores
 from apps.contato.models import Contato
+from apps.comentario.models import Comentario, ImagemComentario
 from apps.contato.forms import ContatoForm
 
 
 def index(request):
     intro = Intro.objects.all().order_by('-id')
-    nossos_valores = NossosValores.objects.all().last()
+    nossos_valores = NossosValores.objects.all().first()
     valores = Valores.objects.all().order_by('-id')
     galeria = Galeria.objects.all().order_by('-data')
-    contato = Contato.objects.all().last()
+    contato = Contato.objects.all().first()
+    comentario = Comentario.objects.all().order_by('-data_publicacao').first()
+    imagem_comentario = ImagemComentario.objects.first()
 
     if request.method == "GET":
         form = ContatoForm()
