@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from .models import Galeria
-from apps.sobre.models import Intro, NossosValores, Valores
+from apps.sobre.models import Intro, NossosValores, Valores, QuemSomos, ImagemQuemSomos
+from apps.servico.models import Servico, NossosServicos
 from apps.contato.models import Contato
 from apps.comentario.models import Comentario, ImagemComentario
 from apps.contato.forms import ContatoForm
@@ -9,6 +10,10 @@ from apps.contato.forms import ContatoForm
 
 def index(request):
     intro = Intro.objects.all().order_by('-id')
+    quem_somos = QuemSomos.objects.all().first()
+    imagem_quem_somos = ImagemQuemSomos.objects.all().first()
+    servicos = Servico.objects.all().order_by('-id')
+    nossos_servicos = NossosServicos.objects.all().first()
     nossos_valores = NossosValores.objects.all().first()
     valores = Valores.objects.all().order_by('-id')
     galeria = Galeria.objects.all().order_by('-data')

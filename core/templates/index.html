@@ -52,15 +52,19 @@
         </section>
         <section id="home" data-anima="scroll">
             <div class="side-a-side_grid">
-                <div class="left_side"><img src="{% static '/img/home/logo-Text.svg' %}" alt="Logo e Texto Green Gardens">
+                <div class="left_side" {% if imagem_quem_somos %}style="background-image: url({{imagem_quem_somos.imagem.url}});"{% else %}style="background-image: url({% static '/img/home/homeImg.webp' %});"{% endif %}>
+                    <img src="{% static '/img/home/logo-Text.svg' %}" alt="Logo e Texto Green Gardens">
                     <div class="overlay"></div>
                 </div>
                 <div class="right_side">
-                    <div class="right_side-content"><img src="{% static '/img/geral/logo.svg' %}" alt="Logo Green Gardens">
-                        <p>Desde 2014 nossa missão é transformar espaços urbanos e residenciais em ambientes verdes e
-                            sustentáveis, promovendo a harmonia entre a natureza e a vida moderna. </p><a
-                            href="#contato" class="home_contact_button">Entrar em Contato</a>
-                    </div><img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoração em círculo"
+                    <div class="right_side-content">
+                        <img src="{% static '/img/geral/logo.svg' %}" alt="Logo Green Gardens">
+                        {% if quem_somos %}
+                            <p>{{ quem_somos.descricao }}</p>
+                        {% endif %}
+                        <a href="#contato" class="home_contact_button">Entrar em Contato</a>
+                    </div>
+                    <img src="../static/img/geral/deco-verdeClaro.svg" alt="Decoração em círculo"
                                 class="deco-home">
                 </div>
             </div>
@@ -68,35 +72,38 @@
         <section id="servicos" data-anima="scroll"><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza"
                                                         class="deco_home-top">
             <div class="servicos container">
-                <h1 class="section_title">Nossos serviços</h1>
+                {% if nossos_servicos %}
+                <h1 class="section_title">{{ nossos_servicos.titulo }}</h1>
+                {% endif %}
                 <div class="servicos_grid container">
-                    <div class="servicos_card"><img src="../static/img/servicos/paisagismo-urbano.webp"
-                            alt="Paisagismo urbano">
-                        <p>Paisagismo urbano</p>
-                    </div>
-                    <div class="servicos_card"><img src="../static/img/servicos/paisagismo-interno.webp"
-                            alt="Paisagismo de áreas internas">
-                        <p>Paisagismo de áreas internas</p>
-                    </div>
+                    {% if servicos %}
+                        {% for servico in servicos %}
+                        <div class="servicos_card"><img src="{{ servico.imagem.url }}"
+                                alt="{{ servico.alt }}">
+                            <p>{{ servico.titulo }}</p>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-            </div><img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_home-bottom">
+            </div>
+            <img src="{% static '/img/geral/deco-cinza.svg' %}" alt="Decoração cinza" class="deco_home-bottom">
         </section>
         <section id="servicos_mobile" data-anima="scroll">
-            <h1 class="section_title container">Nossos serviços</h1>
+            {% if nossos_servicos %}
+            <h1 class="section_title container">{{ nossos_servicos.titulo }}</h1>
+            {% endif %}
             <div class="carrossel_servicos">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="servicos_mobile_card"><img src="../static/img/servicos/paisagismo-urbano.webp"
-                                alt="Paisagismo Urbano">
-                            <p class="container">Paisagismo Urbano</p>
+                    {% if servicos %}
+                    {% for servico in servicos %}
+                        <div class="swiper-slide">
+                            <div class="servicos_mobile_card"><img src="{{ servico.imagem.url }}"
+                                    alt="{{ servico.alt }}">
+                                <p class="container">{{ servico.titulo }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="servicos_mobile_card"><img src="../static/img/servicos/paisagismo-interno.webp"
-                                alt="Paisagismo Interno" loading="lazy">
-                            <p class="container">Paisagismo Interno</p>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="swiper-button-next-servicos"><img src="{%  static '/img/servicos/next-arrow.svg' %}"
                         alt="Seta de próximo"></div>
