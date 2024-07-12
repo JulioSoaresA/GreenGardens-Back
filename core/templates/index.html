@@ -105,36 +105,45 @@
                     {% endfor %}
                     {% endif %}
                 </div>
-                <div class="swiper-button-next-servicos"><img src="{%  static '/img/servicos/next-arrow.svg' %}"
-                        alt="Seta de próximo"></div>
-                <div class="swiper-button-prev-servicos"><img src="{% static '/img/servicos/prev-arrow.svg' %}"
-                        alt="Seta de anterior"></div>
+                <div class="swiper-button-next-servicos">
+                    <img src="{%  static '/img/servicos/next-arrow.svg' %}" alt="Seta de próximo">
+                </div>
+                <div class="swiper-button-prev-servicos">
+                    <img src="{% static '/img/servicos/prev-arrow.svg' %}" alt="Seta de anterior">
+                </div>
             </div>
         </section>
         <section id="ebooks" data-anima="scroll">
             <div class="ebooks_grid container">
                 <div class="ebooks_text">
-                    <h1 class="section_title">E-books gratuitos</h1>
-                    <p>Descubra as melhores práticas de cuidados e paisagismo com o nosso eBook exclusivo! Aprenda a
-                        transformar seu jardim em um paraíso verde com dicas detalhadas de plantio, poda e manutenção.
-                        Domine técnicas de design paisagístico para criar espaços harmoniosos e funcionais. Seja um
-                        expert em jardinagem e desfrute de um ambiente natural deslumbrante. </p><button
-                        data-buttonModal>Download gratuito</button>
-                </div><img src="../static/img/ebooks/ebook.webp" alt="E-book de cuidados e paisagismo">
+                    {% if nossos_ebooks %}
+                    <h1 class="section_title">{{ nossos_ebooks.titulo }}</h1>
+                    <p>{{ nossos_ebooks.descricao }}</p>
+                    {% endif %}
+                    {% if ebook %}
+                    <button data-buttonModal>Download gratuito</button>
+                    {% endif %}
+                </div>
+                {% if ebook %}
+                <img src="{{ ebook.imagem.url }}" alt="{{ ebook.titulo }}">
+                {% endif %}
             </div><img src="{% static '/img/geral/deco-verdeClaro.svg' %}" alt="Decoraçao serviços" class="deco_servicos">
         </section>
         <section id="ebooks_mobile" data-anima="scroll">
-            <h1 class="section_title container">E-books gratuitos</h1>
+            {% if nossos_ebooks %}
+            <h1 class="section_title container">{{ nossos_ebooks.titulo }}</h1>
             <div class="ebooks_mobile_grid container">
-                <p id="ebooks_mobile_text" class="ebooks_mobile_text">Descubra as melhores práticas de cuidados e
-                    paisagismo com o nosso eBook exclusivo! Aprenda a transformar seu jardim em um paraíso verde com
-                    dicas detalhadas de plantio poda e manutenção. Domine técnicas de design paisagístico para criar
-                    espaços harmoniosos e funcionais. <span id="read_more_text" class="read_more_text">Seja um expert em
-                        jardinagem e desfrute de um ambiente natural deslumbrante. </span><button id="show_more_text"
-                        class="show_more_text">... Leia mais</button></p><button class="buttonOpenModal_mobile"
-                    data-buttonModal>Download gratuito</button><img src="../static/img/ebooks/ebook.webp"
-                    alt="Guia de cuidados" class="ebooks_mobile_img">
-            </div><img src="{% static '/img/geral/deco-verdeClaro.svg' %}" alt="Decoraçao cinza" class="deco_ebooks_mobile">
+                <p id="ebooks_mobile_text" class="ebooks_mobile_text">{{ nossos_ebooks.descricao }}
+                    <span id="read_more_text" class="read_more_text">Seja um expert em
+                        jardinagem e desfrute de um ambiente natural deslumbrante. </span>
+                    <button id="show_more_text" class="show_more_text">... Leia mais</button></p>
+                    <button class="buttonOpenModal_mobile" data-buttonModal>Download gratuito</button>
+                    {% if ebook %}
+                    <img src="{{ ebook.imagem.url }}" alt="{{ ebook.titulo }}" class="ebooks_mobile_img">
+                    {% endif %}
+            {% endif %}
+            </div>
+            <img src="{% static '/img/geral/deco-verdeClaro.svg' %}" alt="Decoraçao cinza" class="deco_ebooks_mobile">
         </section>
         <section id="valores" class="container" data-anima="scroll">
             {% if nossos_valores %}
@@ -269,14 +278,22 @@
     </footer>
     <section id="modal">
         <div class="modal_box">
-            <form id="modalForm">
-                <div class="modal_side_input"><label for="modalName">Nome <br><input type="text" name="modalName"
-                            placeholder="Seu nome" id="modalName"></label><label for="modalTelefone">Telefone <br><input
-                            type="text" name="modalTelefone" placeholder="(xx) xxxxx-xxxxx" id="modalTelefone"></label>
-                </div><label for="modalEmail">Email <br><input type="email" name="modalEmail"
-                        placeholder="nome@email.com" id="modalEmail"></label>
-                <div class="modal_buttons"><button id="backModalBtn">Voltar</button><button id="dowloadModalBtn">Fazer
-                        download</button></div>
+            <form id="modalForm" action="{% url 'download_ebook' ebook.id %}" method="POST">
+                {% csrf_token %}
+                <div class="modal_side_input">
+                    <label for="modalName">Nome <br>
+                        <input type="text" name="modalName" placeholder="Seu nome" id="modalName">
+                    </label>
+                    <label for="modalTelefone">Telefone <br>
+                        <input class="telefone-mask" type="text" name="modalTelefone" placeholder="(xx) xxxxx-xxxxx" id="modalTelefone">
+                    </label>
+                </div>
+                <label for="modalEmail">Email <br>
+                    <input type="email" name="modalEmail" placeholder="nome@email.com" id="modalEmail">
+                </label>
+                <div class="modal_buttons">
+                    <button id="backModalBtn" type="button">Voltar</button>
+                    <button id="dowloadModalBtn" type="submit">Fazer download</button></div>
             </form>
             <div class="download_finished" id="downloadFinished">
                 <p>O download foi realizado com sucesso, obrigado!</p><button id="CloseDowloadBtn">Voltar</button>
@@ -296,11 +313,11 @@
     <script>
         $(document).ready(function () {
             // Aplica a máscara
-            $('.telefone-mask').mask('(00) 0000-0000');
+            $('.telefone-mask').mask('(00) 00000-0000');
 
             // Limita o número de caracteres
             $('.telefone-mask').on('input', function () {
-                const maxLength = 14; // Incluindo parênteses, espaço e hífen
+                const maxLength = 15; // Incluindo parênteses, espaço e hífen
                 if (this.value.length > maxLength) {
                     this.value = this.value.slice(0, maxLength);
                 }

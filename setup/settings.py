@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.contato',
     'apps.comentario',
     'apps.servico',
+    'apps.ebook',
 ]
 
 MIDDLEWARE = [
