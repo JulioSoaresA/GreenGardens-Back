@@ -2,9 +2,25 @@
 
 
 # Green Gardens
+### 🌿 Sobre o Projeto GreenGardens
+A GreenGardens é uma empresa inovadora que se dedica à sustentabilidade e ao bem-estar através de jardins e espaços verdes.
 
-[![Descrição da imagem](https://i.imgur.com/AomVPOP.jpeg)](https://green-gardens-front.vercel.app/)
+[![Descrição da imagem](https://i.imgur.com/AomVPOP.jpeg)](https://juliosoares.pythonanywhere.com/)
+
 clickable ↑
+
+### 🔧 Minha Contribuição
+Fui responsável pelo desenvolvimento do backend utilizando Python e Django. O backend foi inteiramente dinamizado, permitindo que todas as imagens e textos na landing page possam ser editados conforme necessário.
+
+### 🎨 Contribuição do Time
+- Yan Xavier: Desenvolveu o frontend utilizando HTML, CSS e JavaScript, garantindo uma interface atraente e responsiva.
+- Beatriz Xavier: Criou o mockup UI/UX, proporcionando uma experiência do usuário fluida e intuitiva.
+
+### 📄 Funcionalidades Principais:
+- [x] Modal de cadastro, onde após o registro, o usuário pode fazer o download de um eBook exclusivo.
+- [x] Formulário de contato para que os visitantes possam facilmente entrar em contato com a empresa.
+
+Este projeto foi uma grande oportunidade para aplicar nossos conhecimentos e colaborar em um ambiente de equipe, e estamos muito orgulhosos do resultado final!
 
 ### 🔨 Guia de instalação
 
